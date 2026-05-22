@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang=""ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ADHD</title>
+    <style>
+        body{
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: white;
+    color: black
+  }
+   .container{
+    background-color: white;
+   }
+   .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .input-group {
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+
+        input {
+            width: 80px;
+            padding: 5px;
+            font-size: 1.1rem;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+      
+        input::-webkit-inner-spin-button, 
+        input::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: red; 
+        }
+    </style>
+</head>
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>本日の勝率</h2>
+        
+        <div class="input-group">
+            <input type="number" id="wins" value="0" min="0" oninput="calculateWinRate()"> 勝
+        </div>
+        
+        <div class="input-group">
+            <input type="number" id="losses" value="0" min="0" oninput="calculateWinRate()"> 負
+        </div>
+        
+        <div class="result">
+            勝率: <span id="rate">0.00</span> %
+        </div>
+    </div>
+
+    <script>
+        function calculateWinRate() {
+            const wins = parseInt(document.getElementById('wins').value) || 0;
+            const losses = parseInt(document.getElementById('losses').value) || 0;
+            
+            const totalGames = wins + losses;
+            let winRate = 0;
+
+            
+            if (totalGames > 0) {
+             
+                winRate = (wins / totalGames) * 100;
+            }
+
+        
+            document.getElementById('rate').textContent = winRate.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
